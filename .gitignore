@@ -10,7 +10,6 @@
 *.lo
 
 # Fortran module files
-*.mod
 *.smod
 
 # Precompiled Headers
@@ -55,7 +54,6 @@
 *.pdb
 
 # Kernel Module Compile Results
-*.mod*
 *.cmd
 .tmp_versions/
 modules.order
