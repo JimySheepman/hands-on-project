@@ -1,0 +1,12 @@
+diff --git a/linux-containers-in-500-loc/contained.c b/linux-containers-in-500-loc/contained.c
+index 501aff5..17e7373 100644
+--- a/linux-containers-in-500-loc/contained.c
++++ b/linux-containers-in-500-loc/contained.c
+@@ -34,7 +34,6 @@ int capabilities()
+ 		CAP_AUDIT_WRITE,
+ 		CAP_BLOCK_SUSPEND,
+ 		CAP_DAC_READ_SEARCH,
+-		CAP_FSETID,
+ 		CAP_IPC_LOCK,
+ 		CAP_MAC_ADMIN,
+ 		CAP_MAC_OVERRIDE,

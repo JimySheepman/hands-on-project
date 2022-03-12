@@ -1,0 +1,12 @@
+diff --git a/linux-containers-in-500-loc/contained.c b/linux-containers-in-500-loc/contained.c
+index 501aff5..4895071 100644
+--- a/linux-containers-in-500-loc/contained.c
++++ b/linux-containers-in-500-loc/contained.c
+@@ -44,7 +44,6 @@ int capabilities()
+ 		CAP_SYS_ADMIN,
+ 		CAP_SYS_BOOT,
+ 		CAP_SYS_MODULE,
+-		CAP_SYS_NICE,
+ 		CAP_SYS_RAWIO,
+ 		CAP_SYS_RESOURCE,
+ 		CAP_SYS_TIME,
