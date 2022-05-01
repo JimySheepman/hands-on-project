@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"gin-mysql-api/entity"
 	"os"
 
 	"github.com/jinzhu/gorm"
@@ -10,7 +11,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func SetupDatabaseConncetion() *gorm.DB {
+func SetupDatabaseConnection() *gorm.DB {
 	err := godotenv.Load()
 	if err != nil {
 		panic("Failed to load env file")
@@ -26,11 +27,12 @@ func SetupDatabaseConncetion() *gorm.DB {
 	if err != nil {
 		panic("Failed to create a conncetion to database")
 	}
-	// db.AutoMigrate()
+
+	db.AutoMigrate(&entity.Book{}, &entity.User{})
 	return db
 }
 
-func CloseDatabaseConncetion(db *gorm.DB) {
+func CloseDatabaseConnection(db *gorm.DB) {
 	dbSQL, err := db.DB()
 	if err != nil {
 		panic("Failed to close conncetion from database")
