@@ -23,12 +23,12 @@ func (uc *UserController) Healthcheck(c *fiber.Ctx) error {
 	})
 }
 
-func (uc *UserController) Login(c *fiber.Ctx) {
-
+func (uc *UserController) Login(c *fiber.Ctx) error {
+	return nil
 }
 
-func (uc *UserController) Register(c *fiber.Ctx) {
-
+func (uc *UserController) Register(c *fiber.Ctx) error {
+	return nil
 }
 
 /*

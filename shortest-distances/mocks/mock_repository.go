@@ -1,13 +1,23 @@
 package mocks
 
+import "context"
+
 type postgreMockRepository struct {
-	Login    map[int]error
-	Register map[int]error
+	login    map[int]error
+	register map[int]error
 }
 
 func NewMockRepository() *postgreMockRepository {
 	return &postgreMockRepository{
-		Login:    map[int]error{},
-		Register: map[int]error{},
+		login:    map[int]error{},
+		register: map[int]error{},
 	}
+}
+
+func (r *postgreMockRepository) Login(ctx context.Context) error {
+	return nil
+}
+
+func (r *postgreMockRepository) Register(ctx context.Context) error {
+	return nil
 }
