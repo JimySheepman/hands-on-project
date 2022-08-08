@@ -134,7 +134,7 @@ func TestRoutes(t *testing.T) {
 			route:         "/api/v1/login",
 			method:        "POST",
 			expectedError: false,
-			expectedCode:  400,
+			expectedCode:  200,
 		},
 		{
 			description:   "test should be not accepted login routes and GET method",
@@ -169,7 +169,7 @@ func TestRoutes(t *testing.T) {
 			route:         "/api/v1/register",
 			method:        "POST",
 			expectedError: false,
-			expectedCode:  400,
+			expectedCode:  200,
 		},
 		{
 			description:   "test should be not accepted register routes and GET method",
