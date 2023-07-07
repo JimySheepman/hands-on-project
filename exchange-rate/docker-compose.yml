@@ -1,0 +1,73 @@
+version: "3.9"
+services:
+  er-api:
+    depends_on:
+      - er-api-producer
+      - er-rabbit-consumer
+    restart: always
+    build:
+      context: ./er-api
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - test-network
+    container_name: er-api
+    env_file:
+      - ./.env
+
+  er-api-producer:
+    build:
+      context: ./er-api-producer
+      dockerfile: Dockerfile
+    ports:
+      - 3002:3002
+    restart: always
+    container_name: er-api-producer
+    env_file:
+      - ./.env
+
+  er-rabbit-consumer:
+    build:
+      context: ./er-rabbit-consumer
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3001
+    restart: always
+    networks:
+      - test-network
+    container_name: er-rabbit-consumer
+    env_file:
+      - ./.env
+
+  postgres:
+    container_name: postgres
+    image: postgres:14-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: er
+      POSTGRES_USER: merlins
+      POSTGRES_PASSWORD: root
+    ports:
+      - 5432:5432
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - test-network
+
+  rabbitmq:
+    hostname: 'dev-rabbitmq'
+    image: rabbitmq:3.8.14-management
+    container_name: 'project-rabbitmq'
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - '~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/mnesia/'
+    networks:
+      - test-network
+
+networks:
+  test-network:
+    driver: bridge
