@@ -1,0 +1,7 @@
+#!/bin/bash
+cmd="python main.py && docker exec -i mariadb mysql -uroot -ppassword1 --database=challenge < /home/merlins/Downloads/covid19-table.sql"
+while true
+do
+    $cmd &
+    sleep 600
+done
